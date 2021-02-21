@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Member } from '../member'; //.ts要らない
-import { MEMBERS } from '../mock-members';
+import { MemberService } from '../member.service';
 
 
 @Component({
@@ -10,25 +10,24 @@ import { MEMBERS } from '../mock-members';
 })
 export class MembersComponent implements OnInit {
 
-  members = MEMBERS;
-
-  member: Member = {　//このMemberプロパティにMemberInterfaceを型として指定
-
-    id: 1,
-    name: '佐藤　秋'
-  
-  };
+  members: Member[];
   selectedMember: Member;
-  
-  constructor() { }
+  //DI
+  constructor(private memberService: MemberService) { }
 
+
+  //外部から(サーバーなど)取得したものはngOnInitで実行する
   ngOnInit(): void {
+    this.getMembers();
   }
 
   onSelect(member: Member): void  {
     this.selectedMember = member;
   }
-
+  getMembers(): void {
+    this.memberService.getMembers()//ngOninit 内で実行 //Obserbleではsubscribeメソッドが使用可
+   .subscribe(members => this.members = members); //of関数で渡したmembers配列を受けとれる=> 自身のmembersプロパティにモックデータをセット
+  }
 
 }
 
