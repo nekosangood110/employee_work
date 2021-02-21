@@ -1,0 +1,9 @@
+<div *ngIf="member"> <!--memberがセットされていない状態だと以下非表示 -->
+    <h2>{{ member.name }}</h2>
+    <div><span>id: </span>{{ member.id }}</div>
+    <div>
+        <label>名前:
+            <input type="text" [(ngModel)]="member.name" placeholder="ここに名前を入力してください">
+        </label>
+    </div>
+<div>

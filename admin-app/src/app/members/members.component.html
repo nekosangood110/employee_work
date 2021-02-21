@@ -5,17 +5,19 @@
 
 <h2>社員一覧</h2>
 <ul class="members"> 
-    <li *ngFor="let member of members"> 
-    <li>
+    <li 
+    *ngFor="let member of members" 
+    [class.selected]="member === selectedMember" 
+    (click)="onSelect(member)"
+    > 
+    <!--クラスバインディング-->
+    <!--""(条件内)trueならclass属性にselected付与 -->
+
+
         <span class="badge">{{ member.id }}</span>{{ member.name}}
     </li>
 </ul>
+<!--detailcomponentでmemberプロパティでselectedMemberを-->
+<app-member-detail [member]="selectedMember"></app-member-detail>
 
-<h2>{{ member.name }}</h2>
-<div><span>id: </span>{{ member.id }}</div>
-<div>
-    <label>名前:
-        <input type="text" [(ngModel)]="member.name" placeholder="ここに名前を入力してください">
-    </label>
 
-</div>
