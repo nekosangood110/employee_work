@@ -1,1 +1,5 @@
-<p>messages works!</p>
+<div *ngIf="MessageService.messages.length"> <!--messageServiceのmessages配列にデータがある場合 .lengthは要素数を返す　1以上ならtrue-->
+  <h2>メッセージログ</h2>
+  <button class="clear"(click)="MessageService.clear()">クリア</button>
+  <div *ngFor="let message of MessageService.messages">{{ message }}</div> <!--message配列をすべて表示-->
+</div>

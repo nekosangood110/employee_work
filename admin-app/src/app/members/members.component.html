@@ -4,20 +4,19 @@
 
 
 <h2>社員一覧</h2>
-<ul class="members"> 
-    <li 
-    *ngFor="let member of members" 
-    [class.selected]="member === selectedMember" 
-    (click)="onSelect(member)"
-    > 
+<ul class="members">
+    <li *ngFor="let member of members">
+      <a routerLink="/detail/{{ member.id }}">
+        <span class="badge">{{ member.id }}</span>{{ member.name}}
+      </a>
+
     <!--クラスバインディング-->
     <!--""(条件内)trueならclass属性にselected付与 -->
-
-
-        <span class="badge">{{ member.id }}</span>{{ member.name}}
+    <!-- [class.selected]="member === selectedMember"
+    (click)="onSelect(member)" -->
     </li>
 </ul>
-<!--detailcomponentでmemberプロパティでselectedMemberを-->
-<app-member-detail [member]="selectedMember"></app-member-detail>
+<!--detailcomponentでmemberプロパティでselectedMemberを入れてる-->
+<!-- <app-member-detail [member]="selectedMember"></app-member-detail> -->
 
 
