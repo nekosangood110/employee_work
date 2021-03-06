@@ -27,5 +27,6 @@ export class MemberService {
     this.messageService.add(`MemberService: 社員データ(id=${id}を取得しました`);
     return of(MEMBERS.find(member => member.id === id))
   }
+  //配列に対してのfind ===がマッチするものを一つだけ取得している
 }
 

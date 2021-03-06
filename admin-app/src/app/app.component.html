@@ -1,4 +1,4 @@
-<h1>{{ title }}</h1>
+<!-- <h1>{{ title }}</h1> -->
 
 
 <nav>
@@ -7,3 +7,21 @@
 </nav>
 <router-outlet></router-outlet>
 <app-messages></app-messages> <!--tsのselectorの部分 -->
+
+
+
+
+<P>テスト</P>
+<form [formGroup]="inputForm">
+<label>性
+<input type="text" placeholder="大野" formControlName="firstName" required>
+</label>
+
+<label>名
+<input type="text" placeholder="衛" formControlName="lastName" required>
+</label>
+</form>
+
+<p>{{ inputForm.status }}</p>
+
+
